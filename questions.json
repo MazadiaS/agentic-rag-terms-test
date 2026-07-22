@@ -1,0 +1,293 @@
+{
+ "title": "Agentic RAG — Code & Terms Exam",
+ "passing": 60,
+ "time_limit_min": 25,
+ "questions": [
+  {
+   "id": 1,
+   "q": "The LLM is created with temperature=0. What does that do?",
+   "options": [
+    "Makes the output deterministic and focused",
+    "Makes the output more random and creative",
+    "Doubles the model's context window size",
+    "Turns off the model's safety filters"
+   ],
+   "answer": 0,
+   "topic": "Temperature",
+   "explain": "temperature=0 makes the model pick the most likely tokens — consistent, focused answers."
+  },
+  {
+   "id": 2,
+   "q": "What happens if you raise the temperature toward 1?",
+   "options": [
+    "The answers become perfectly deterministic",
+    "The answers get more random and varied",
+    "The retriever returns more document chunks",
+    "The embedding dimension increases"
+   ],
+   "answer": 1,
+   "topic": "Temperature",
+   "explain": "Higher temperature = more randomness/creativity; lower = more focused and repeatable."
+  },
+  {
+   "id": 3,
+   "q": "max_retries=1 and timeout=25 on the LLM do what?",
+   "options": [
+    "Set the chunk size and the overlap values",
+    "Choose the embedding model's dimension",
+    "Limit API retries and cap the request time",
+    "Control how many chunks are retrieved"
+   ],
+   "answer": 2,
+   "topic": "Temperature",
+   "explain": "They cap how many times a failed call retries and how long a request may run."
+  },
+  {
+   "id": 4,
+   "q": "chunk_size=1000 in the splitter sets what?",
+   "options": [
+    "The number of documents to load into memory",
+    "How many chunks the retriever returns",
+    "The dimension of the embedding vector",
+    "The length of each text piece in characters"
+   ],
+   "answer": 3,
+   "topic": "Chunking",
+   "explain": "chunk_size is how big each text piece is before it gets embedded."
+  },
+  {
+   "id": 5,
+   "q": "What does chunk_overlap=150 do?",
+   "options": [
+    "Repeats text between chunks so context isn't cut",
+    "Removes 150 duplicate documents from the set",
+    "Limits each answer to 150 characters long",
+    "Sets how many chunks are retrieved per query"
+   ],
+   "answer": 0,
+   "topic": "Chunking",
+   "explain": "Overlap repeats a little text at boundaries so an idea split across chunks stays whole."
+  },
+  {
+   "id": 6,
+   "q": "What does RecursiveCharacterTextSplitter do?",
+   "options": [
+    "Turns each chunk into a meaning vector",
+    "Splits documents into smaller text chunks",
+    "Ranks the retrieved chunks by relevance",
+    "Removes stopwords from the document text"
+   ],
+   "answer": 1,
+   "topic": "Chunking",
+   "explain": "It's the tool that breaks documents into chunks before embedding."
+  },
+  {
+   "id": 7,
+   "q": "What is an embedding (text-embedding-3-small)?",
+   "options": [
+    "A compressed zip copy of the document",
+    "The English translation of the text",
+    "A vector of numbers that captures meaning",
+    "A random id assigned to each chunk"
+   ],
+   "answer": 2,
+   "topic": "Embeddings",
+   "explain": "An embedding turns text into a numeric vector so meaning can be compared."
+  },
+  {
+   "id": 8,
+   "q": "Why embed the text instead of keyword search?",
+   "options": [
+    "It makes the documents load much faster",
+    "It removes the need for a vector database",
+    "It only works on images, not on text",
+    "It matches by meaning, not by exact words"
+   ],
+   "answer": 3,
+   "topic": "Embeddings",
+   "explain": "Embeddings enable semantic search — matching meaning even when the words differ."
+  },
+  {
+   "id": 9,
+   "q": "The retriever uses search_type='mmr'. What is MMR?",
+   "options": [
+    "Retrieval balancing relevance and diversity",
+    "A model that writes the final answer text",
+    "A method to compress the embedding vectors",
+    "A tool that searches the public internet"
+   ],
+   "answer": 0,
+   "topic": "Retrieval",
+   "explain": "MMR (Maximal Marginal Relevance) picks chunks that are relevant AND not redundant."
+  },
+  {
+   "id": 10,
+   "q": "In the retriever, k=8 means what?",
+   "options": [
+    "Eight documents are loaded from the disk",
+    "Eight chunks are returned as the context",
+    "The model may retry up to eight times",
+    "Each chunk is eight sentences long"
+   ],
+   "answer": 1,
+   "topic": "Retrieval",
+   "explain": "k is how many chunks the retriever hands to the generator."
+  },
+  {
+   "id": 11,
+   "q": "What does fetch_k=24 do in MMR?",
+   "options": [
+    "Sets the final answer to 24 words long",
+    "Retries the whole search up to 24 times",
+    "Fetches 24 candidates before narrowing to k",
+    "Makes each chunk exactly 24 characters"
+   ],
+   "answer": 2,
+   "topic": "Retrieval",
+   "explain": "MMR first fetches fetch_k candidates, then selects the best diverse k from them."
+  },
+  {
+   "id": 12,
+   "q": "lambda_mult=0.5 in MMR controls what?",
+   "options": [
+    "The learning rate used during training",
+    "The temperature of the generation model",
+    "The number of documents to ingest",
+    "The balance between relevance and diversity"
+   ],
+   "answer": 3,
+   "topic": "Retrieval",
+   "explain": "lambda_mult tunes MMR: near 1 = pure relevance, near 0 = maximum diversity."
+  },
+  {
+   "id": 13,
+   "q": "The code uses Distance.COSINE. What does cosine measure?",
+   "options": [
+    "Similarity by the angle between two vectors",
+    "The exact number of shared keywords",
+    "The file-size difference of two documents",
+    "The time taken to embed the text"
+   ],
+   "answer": 0,
+   "topic": "VectorDB",
+   "explain": "Cosine similarity compares the angle between vectors — closer angle = more similar."
+  },
+  {
+   "id": 14,
+   "q": "What is Qdrant in this project?",
+   "options": [
+    "The language model that writes answers",
+    "A vector database that stores embeddings",
+    "The web-search tool used for fallback",
+    "The library that reads the PDF files"
+   ],
+   "answer": 1,
+   "topic": "VectorDB",
+   "explain": "Qdrant stores the embeddings and finds the ones nearest to a query."
+  },
+  {
+   "id": 15,
+   "q": "VectorParams(size=dim) sets what?",
+   "options": [
+    "The maximum number of chunks to store",
+    "The temperature of the embedding model",
+    "The dimension of the embedding vectors",
+    "The number of retries on a failure"
+   ],
+   "answer": 2,
+   "topic": "VectorDB",
+   "explain": "size is the embedding dimension (e.g. 768 for Gemini, 1536 for OpenAI)."
+  },
+  {
+   "id": 16,
+   "q": "Embedded mode uses a path; the other uses a URL. The difference?",
+   "options": [
+    "Text search vs image search only",
+    "The free tier vs the paid tier only",
+    "OpenAI vs Gemini embeddings only",
+    "A local file store vs a remote server"
+   ],
+   "answer": 3,
+   "topic": "VectorDB",
+   "explain": "path = embedded local Qdrant (no server); url = a remote/cloud Qdrant server."
+  },
+  {
+   "id": 17,
+   "q": "What does LangGraph's StateGraph build?",
+   "options": [
+    "The agent's decision graph of nodes and edges",
+    "The vector database that stores the chunks",
+    "The PDF loader that extracts the text",
+    "The embedding model used for the search"
+   ],
+   "answer": 0,
+   "topic": "LangGraph",
+   "explain": "StateGraph wires the nodes (retrieve, grade, generate…) and the routing between them."
+  },
+  {
+   "id": 18,
+   "q": "What does the grade_documents node do?",
+   "options": [
+    "Writes the final answer from the chunks",
+    "Grades each passage and drops the weak ones",
+    "Splits the documents into small chunks",
+    "Turns the passages into embedding vectors"
+   ],
+   "answer": 1,
+   "topic": "Grading",
+   "explain": "An LLM grades each retrieved passage and keeps only the relevant ones."
+  },
+  {
+   "id": 19,
+   "q": "When does the agent fall back to web search?",
+   "options": [
+    "On every single question by default",
+    "Whenever the final answer is too long",
+    "Only when no relevant documents are found",
+    "Only when the temperature is set high"
+   ],
+   "answer": 2,
+   "topic": "Grading",
+   "explain": "route_after_grade sends it to web search only if zero documents survive grading."
+  },
+  {
+   "id": 20,
+   "q": "What does the hallucination check verify?",
+   "options": [
+    "Whether the question is written in English",
+    "Whether the documents loaded correctly",
+    "Whether the vectors have the right size",
+    "Whether the answer is grounded in the docs"
+   ],
+   "answer": 3,
+   "topic": "Grading",
+   "explain": "It checks that every claim in the answer is supported by the retrieved passages."
+  },
+  {
+   "id": 21,
+   "q": "Why use with_structured_output for the graders?",
+   "options": [
+    "To force a fixed schema like a yes/no grade",
+    "To make the answers longer and richer",
+    "To translate the whole output into Uzbek text",
+    "To skip the retrieval step entirely"
+   ],
+   "answer": 0,
+   "topic": "Grading",
+   "explain": "Structured output makes the grader return a clean, parseable verdict every time."
+  },
+  {
+   "id": 22,
+   "q": "The code stores '[Image] ' + caption. What is it doing?",
+   "options": [
+    "Deleting all the images from the PDF",
+    "Describing images so they become searchable",
+    "Compressing the images to save disk space",
+    "Converting the images into audio files"
+   ],
+   "answer": 1,
+   "topic": "Multimodal",
+   "explain": "Images are captioned by a vision model so their content can be retrieved like text."
+  }
+ ]
+}
