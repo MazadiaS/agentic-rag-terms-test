@@ -1,0 +1,232 @@
+{
+ "title": "ML Basics Quiz",
+ "passing": 60,
+ "time_limit_min": 15,
+ "questions": [
+  {
+   "id": 1,
+   "q": "What is the difference between data and information?",
+   "options": [
+    "Data and information are the same thing",
+    "Data is raw facts; information is data that is processed and has meaning",
+    "Information is raw facts; data is the meaning",
+    "Data is only numbers; information is only text"
+   ],
+   "answer": 1,
+   "topic": "Data",
+   "hint": "Which one is 'raw' and which one 'tells you something'?",
+   "explain_simple": "Data = raw facts, like 20, 22, 25. Information = those facts organized so they mean something.",
+   "explain": "Data is raw, unprocessed facts. When we organize or process data so it has meaning, it becomes information."
+  },
+  {
+   "id": 2,
+   "q": "Which one is INFORMATION (not just data)?",
+   "options": [
+    "25, 30, 18, 22",
+    "Ali, Vali, Olim",
+    "true, false, true",
+    "The average temperature this week was 24°C"
+   ],
+   "answer": 3,
+   "topic": "Data",
+   "hint": "Look for the sentence that tells you something useful.",
+   "explain_simple": "A list of numbers is only data. A sentence like 'the average was 24°C' gives meaning, so it is information.",
+   "explain": "Lists of numbers or names are raw data. 'The average temperature this week was 24°C' is processed data with meaning — information."
+  },
+  {
+   "id": 3,
+   "q": "What is Machine Learning (ML)?",
+   "options": [
+    "A computer learns patterns from data, instead of a person writing every rule",
+    "A robot that works in a factory",
+    "A program that only stores data in a table",
+    "A faster type of internet connection"
+   ],
+   "answer": 0,
+   "topic": "ML",
+   "hint": "Think: who writes the rules — a person, or the computer from data?",
+   "explain_simple": "In ML, we give the computer many examples. It finds the pattern itself.",
+   "explain": "Machine Learning means a computer learns patterns from data and uses them to make predictions, without a person writing every rule by hand."
+  },
+  {
+   "id": 4,
+   "q": "What is Pandas?",
+   "options": [
+    "A library for drawing charts only",
+    "A programming language like Python",
+    "A Python library for working with tables of data (rows and columns)",
+    "A database server"
+   ],
+   "answer": 2,
+   "topic": "Libraries",
+   "hint": "Think of Excel, but inside Python.",
+   "explain_simple": "Pandas works with tables: read a file, clean it, filter rows, count, group.",
+   "explain": "Pandas is a Python library for loading, cleaning and analyzing table data (rows and columns)."
+  },
+  {
+   "id": 5,
+   "q": "In Pandas, what is the name of the main table object?",
+   "options": [
+    "List",
+    "DataFrame",
+    "Array",
+    "Chart"
+   ],
+   "answer": 1,
+   "topic": "Libraries",
+   "hint": "Its name has the word 'Frame' in it.",
+   "explain_simple": "A DataFrame is a table in Pandas. It has rows and columns, like an Excel sheet.",
+   "explain": "The DataFrame is Pandas' main object: a table with rows and named columns."
+  },
+  {
+   "id": 6,
+   "q": "What is NumPy used for?",
+   "options": [
+    "Fast math with numbers and arrays",
+    "Making websites",
+    "Sending emails",
+    "Drawing pictures and photos"
+   ],
+   "answer": 0,
+   "topic": "Libraries",
+   "hint": "'Num' = numbers.",
+   "explain_simple": "NumPy = Numerical Python. It does math on many numbers very fast.",
+   "explain": "NumPy (Numerical Python) gives fast arrays and math functions. Pandas and many ML libraries are built on it."
+  },
+  {
+   "id": 7,
+   "q": "What is Matplotlib?",
+   "options": [
+    "A library for cleaning text",
+    "A library for training neural networks",
+    "A library for reading CSV files",
+    "A Python library for making charts and graphs"
+   ],
+   "answer": 3,
+   "topic": "Libraries",
+   "hint": "'Plot' means to draw a graph.",
+   "explain_simple": "Matplotlib draws charts: line charts, bar charts, histograms, and more.",
+   "explain": "Matplotlib is the basic Python library for plotting — line, bar, scatter, histogram charts."
+  },
+  {
+   "id": 8,
+   "q": "What is Seaborn?",
+   "options": [
+    "A library for fast math with arrays",
+    "A table library that replaces Pandas",
+    "A chart library built on Matplotlib, for nicer statistical charts with less code",
+    "A tool for writing Python code"
+   ],
+   "answer": 2,
+   "topic": "Libraries",
+   "hint": "It is also for charts, and it uses Matplotlib inside.",
+   "explain_simple": "Seaborn makes beautiful charts (like heatmaps) with short code. It uses Matplotlib under the hood.",
+   "explain": "Seaborn is built on Matplotlib. It makes statistical charts (heatmap, boxplot, pairplot) look good with less code."
+  },
+  {
+   "id": 9,
+   "q": "You want to open a CSV file as a table. Which library do you use?",
+   "options": [
+    "Pandas — pd.read_csv()",
+    "Matplotlib — plt.plot()",
+    "Seaborn — sns.heatmap()",
+    "NumPy — np.mean()"
+   ],
+   "answer": 0,
+   "topic": "Libraries",
+   "hint": "Which library works with tables?",
+   "explain_simple": "pd.read_csv('file.csv') opens the file as a DataFrame (a table).",
+   "explain": "Pandas reads CSV files into a DataFrame with pd.read_csv(). The other libraries are for math or charts."
+  },
+  {
+   "id": 10,
+   "q": "What is the standard way to import Pandas?",
+   "options": [
+    "import pandas as np",
+    "import pandas as pd",
+    "import pandas as plt",
+    "import pandas as sns"
+   ],
+   "answer": 1,
+   "topic": "Libraries",
+   "hint": "The short name is the first letters of 'pandas'.",
+   "explain_simple": "Everyone writes: import pandas as pd. Also: numpy as np, matplotlib.pyplot as plt, seaborn as sns.",
+   "explain": "The common short names are: pandas → pd, numpy → np, matplotlib.pyplot → plt, seaborn → sns."
+  },
+  {
+   "id": 11,
+   "q": "What is an integer (int)?",
+   "options": [
+    "A number with a decimal point, like 2.5",
+    "Text inside quotes, like \"hello\"",
+    "Only True or False",
+    "A whole number with no decimal point, like 7 or -3"
+   ],
+   "answer": 3,
+   "topic": "Types",
+   "hint": "Integer = whole number.",
+   "explain_simple": "int = whole number: 0, 5, 100, -3. No dot.",
+   "explain": "An integer (int) is a whole number without a decimal point: 7, 0, -3, 2026."
+  },
+  {
+   "id": 12,
+   "q": "Which value is a float?",
+   "options": [
+    "10",
+    "\"3.14\"",
+    "3.14",
+    "True"
+   ],
+   "answer": 2,
+   "topic": "Types",
+   "hint": "A float has a decimal point and NO quotes.",
+   "explain_simple": "float = number with a dot: 3.14, 0.5, 9.99. If it has quotes, it is text.",
+   "explain": "3.14 is a float (a number with a decimal point). \"3.14\" in quotes is a string, 10 is an int, True is a boolean."
+  },
+  {
+   "id": 13,
+   "q": "What is a string (str)?",
+   "options": [
+    "Text inside quotes, like \"Tashkent\"",
+    "A whole number",
+    "A number with a decimal point",
+    "A list of numbers"
+   ],
+   "answer": 0,
+   "topic": "Types",
+   "hint": "Look for the quotes.",
+   "explain_simple": "str = text. We write it inside quotes: \"hello\", 'Ali'.",
+   "explain": "A string (str) is text. In Python we put it inside quotes: \"Tashkent\" or 'hello'."
+  },
+  {
+   "id": 14,
+   "q": "What is the type of \"100\" (with quotes)?",
+   "options": [
+    "int",
+    "str",
+    "float",
+    "It has no type"
+   ],
+   "answer": 1,
+   "topic": "Types",
+   "hint": "Quotes change everything!",
+   "explain_simple": "\"100\" has quotes, so Python sees it as text (str), not a number.",
+   "explain": "Anything inside quotes is a string. \"100\" is str; 100 without quotes is int."
+  },
+  {
+   "id": 15,
+   "q": "age = 25, price = 9.99, name = \"Ali\". Which one is which?",
+   "options": [
+    "age = float, price = int, name = str",
+    "age = str, price = float, name = int",
+    "age = int, price = float, name = str",
+    "age = int, price = str, name = float"
+   ],
+   "answer": 2,
+   "topic": "Types",
+   "hint": "Whole number → int. Decimal point → float. Quotes → str.",
+   "explain_simple": "25 is a whole number (int). 9.99 has a dot (float). \"Ali\" has quotes (str).",
+   "explain": "25 → int (whole number), 9.99 → float (decimal point), \"Ali\" → str (text in quotes)."
+  }
+ ]
+}
