@@ -1,12 +1,12 @@
 /* ============================================================
-   Pandas, Matplotlib & Seaborn Quiz — test after the class
+   NumPy & Pandas Test — test after the class
    One question per screen · navigator · flag · countdown timer
    Results saved to a Google Sheet via Apps Script (see SETUP.md).
    >>> paste your Web App URL below: <<<
    ============================================================ */
 const WEBHOOK_URL = "PASTE_YOUR_WEB_APP_URL_HERE";
 
-const STORAGE_KEY = "pandas_viz_state_v1";
+const STORAGE_KEY = "numpy_pandas_state_v1";
 const DEFAULT_TIME_MIN = 25;
 
 let QUESTIONS = [];

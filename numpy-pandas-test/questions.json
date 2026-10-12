@@ -1,203 +1,249 @@
 {
- "title": "Pandas, Matplotlib & Seaborn Quiz",
+ "title": "NumPy & Pandas Test",
  "passing": 60,
  "time_limit_min": 25,
  "questions": [
   {
    "id": 1,
-   "q": "What is the type of df[\"math\"]?",
-   "code": "x = df[\"math\"]\nprint(type(x))",
+   "q": "What does this code print?",
+   "code": "A = np.array([[1, 2, 3],\n              [4, 5, 6]])\nprint(A.shape)",
    "options": [
-    "A DataFrame",
-    "A NumPy array",
-    "A Series",
-    "A Python list"
+    "(6,)",
+    "(3, 2)",
+    "(2, 3)",
+    "(2, 2)"
    ],
    "answer": 2,
-   "topic": "DataFrame",
-   "hint": "One bracket, one name. Is one column a whole table, or something smaller?",
-   "explain": "df[\"math\"] is ONE column, so it is a Series (values + index). A DataFrame is many Series side by side."
+   "topic": "NumPy basics",
+   "hint": "Shape is always (rows, columns). Count the inner lists first, then the numbers inside one list.",
+   "explain": "A has 2 rows (2 inner lists) and 3 columns (3 numbers in each row), so A.shape is (2, 3)."
   },
   {
    "id": 2,
-   "q": "A student writes df[\"name\", \"math\"] to get two columns. What happens?",
+   "q": "What does this code print?",
+   "code": "A = np.array([[10, 20, 30],\n              [40, 50, 60]])\nprint(A[1, 2])",
    "options": [
-    "KeyError: pandas looks for ONE column called (\"name\", \"math\")",
-    "pandas returns a table with the two columns name and math",
-    "pandas returns only the first column, name, and ignores math",
-    "pandas joins the two columns together into one text column"
+    "20",
+    "60",
+    "30",
+    "50"
+   ],
+   "answer": 1,
+   "topic": "NumPy basics",
+   "hint": "Python starts counting at 0. The first number picks the row, the second picks the column.",
+   "explain": "A[1, 2] = row 1 (the second row) and column 2 (the third column) = 60."
+  },
+  {
+   "id": 3,
+   "q": "What is np.dot(a, b)?",
+   "code": "a = np.array([2, 3])\nb = np.array([4, 5])\nprint(np.dot(a, b))",
+   "options": [
+    "23",
+    "14",
+    "[6 8]",
+    "[8 15]"
    ],
    "answer": 0,
-   "topic": "Selecting",
+   "topic": "NumPy math",
+   "hint": "A dot product has two steps. Step 1 is the same as a * b. Step 2 turns the result into ONE number.",
+   "explain": "Multiply the pairs (2×4 = 8, 3×5 = 15), then add them: 8 + 15 = 23."
+  },
+  {
+   "id": 4,
+   "q": "A.shape is (2, 3) and B.shape is (3, 4). What is the shape of A @ B?",
+   "options": [
+    "(2, 4)",
+    "Error: shapes do not match",
+    "(3, 4)",
+    "(3, 3)"
+   ],
+   "answer": 0,
+   "topic": "NumPy math",
+   "hint": "Write the shapes next to each other: (2, 3) @ (3, 4). The inside numbers must match. Which numbers are left?",
+   "explain": "(m, n) @ (n, p) → (m, p). Inside: 3 = 3, so it works. Outside numbers give the result: (2, 4)."
+  },
+  {
+   "id": 5,
+   "q": "A.shape is (3, 4). Which array can NOT be added to A?",
+   "options": [
+    "An array with shape (4,)",
+    "An array with shape (3, 1)",
+    "An array with shape (1, 4)",
+    "An array with shape (2,)"
+   ],
+   "answer": 3,
+   "topic": "NumPy math",
+   "hint": "Read shapes from RIGHT to LEFT. Two sizes work together if they are equal, or if one of them is 1.",
+   "explain": "(3, 4) + (2,): the last sizes are 4 and 2. They are not equal and neither is 1, so it is an error. The other three all work."
+  },
+  {
+   "id": 6,
+   "q": "What does A.sum(axis=0) give?",
+   "code": "A = np.array([[1, 2, 3],\n              [4, 5, 6]])\nprint(A.sum(axis=0))",
+   "options": [
+    "[5 7 9]",
+    "[1 2 3]",
+    "[6 15]",
+    "21"
+   ],
+   "answer": 0,
+   "topic": "NumPy math",
+   "hint": "axis=0 means move DOWN. You get one answer for every column.",
+   "explain": "axis=0 collapses the rows: 1+4 = 5, 2+5 = 7, 3+6 = 9 → [5 7 9]. axis=1 would give [6 15]."
+  },
+  {
+   "id": 7,
+   "q": "What does print(data) show at the end?",
+   "code": "data = np.array([10, 20, 30, 40])\nnp.delete(data, 1)\nprint(data)",
+   "options": [
+    "[10 30 40]",
+    "[10 20 30 40]",
+    "[10 20 40]",
+    "[20 30 40]"
+   ],
+   "answer": 1,
+   "topic": "NumPy: changing data",
+   "hint": "np.delete builds something new. Did we keep it with an = sign?",
+   "explain": "np.delete returns a NEW array, but we did not save it. data is still [10 20 30 40]. To keep it: data = np.delete(data, 1)."
+  },
+  {
+   "id": 8,
+   "q": "A neural-network layer: what is Y.shape?",
+   "code": "X.shape  # (32, 10)  → 32 samples, 10 features\nW.shape  # (10, 4)\nb.shape  # (4,)\nY = X @ W + b",
+   "options": [
+    "(4, 32)",
+    "(10, 4)",
+    "(32, 4)",
+    "(32, 10)"
+   ],
+   "answer": 2,
+   "topic": "NumPy math",
+   "hint": "Do it in two steps. First use the shape rule for X @ W. Then ask: does + b change the shape?",
+   "explain": "(32, 10) @ (10, 4) → (32, 4). b with shape (4,) is broadcast to every row, so Y stays (32, 4)."
+  },
+  {
+   "id": 9,
+   "q": "A student writes df[\"name\", \"math\"] to get two columns. What happens?",
+   "options": [
+    "pandas returns only the first column, name, and ignores math",
+    "pandas returns a table with the two columns name and math",
+    "pandas joins the two columns together into one text column",
+    "KeyError: pandas looks for ONE column called (\"name\", \"math\")"
+   ],
+   "answer": 3,
+   "topic": "pandas: selecting & filtering",
    "hint": "Look at the brackets. How many brackets do you need to give pandas a LIST of column names?",
    "explain": "Two columns need a list inside the brackets: df[[\"name\", \"math\"]]. With one bracket pandas searches for a single column with that strange name → KeyError."
   },
   {
-   "id": 3,
+   "id": 10,
    "q": "df has the normal index 0, 1, 2, … How many rows does df.loc[0:2] return?",
    "options": [
     "0 rows",
+    "3 rows",
     "1 row",
-    "2 rows",
-    "3 rows"
+    "2 rows"
    ],
-   "answer": 3,
-   "topic": "Selecting",
+   "answer": 1,
+   "topic": "pandas: selecting & filtering",
    "hint": "loc uses labels (names), not positions. Does a slice with labels include the end, or stop before it?",
    "explain": "loc includes the end label: 0, 1 and 2 → 3 rows. iloc[0:2] would stop before 2 → only 2 rows."
   },
   {
-   "id": 4,
-   "q": "What does iloc use to pick rows and columns?",
-   "options": [
-    "A True/False question for every row",
-    "Only the column names, never the row labels",
-    "Positions: integer numbers, like NumPy",
-    "Labels: the index names and column names"
-   ],
-   "answer": 2,
-   "topic": "Selecting",
-   "hint": "Remember the memory trick: what does the letter i in iloc stand for?",
-   "explain": "iloc = integer location → positions (0, 1, 2 …). loc uses labels you can see, like \"Malika\" or \"math\"."
-  },
-  {
-   "id": 5,
+   "id": 11,
    "q": "How many rows does this filter return?",
    "code": "df = pd.DataFrame({\n    \"name\": [\"Aziz\", \"Malika\", \"Bekzod\", \"Dilnoza\",\n             \"Jasur\", \"Nilufar\", \"Sardor\", \"Kamola\"],\n    \"city\": [\"Tashkent\", \"Samarkand\", \"Bukhara\", \"Tashkent\",\n             \"Samarkand\", \"Tashkent\", \"Bukhara\", \"Samarkand\"],\n    \"hours\": [5, 8, 2, 6, 3, 7, 1, 4],\n    \"math\": [85, 92, 60, 78, 70, 88, 55, np.nan],\n    \"english\": [78, 88, 65, 90, np.nan, 84, 58, 75],\n})\n\ntop = df[df[\"math\"] >= 80]\nprint(len(top))",
    "options": [
-    "4",
     "3",
-    "5",
-    "2"
+    "2",
+    "4",
+    "5"
    ],
-   "answer": 1,
-   "topic": "Filtering",
+   "answer": 0,
+   "topic": "pandas: selecting & filtering",
    "hint": "Check every math score one by one. What happens to a missing value (NaN) when you ask “is it ≥ 80?”",
    "explain": "Only 85, 92 and 88 pass (Aziz, Malika, Nilufar). NaN ≥ 80 is False, so Kamola is dropped. → 3 rows."
   },
   {
-   "id": 6,
+   "id": 12,
    "q": "Which filter correctly finds students from Tashkent AND with math ≥ 80?",
    "options": [
     "df[(df[\"city\"] == \"Tashkent\") and (df[\"math\"] >= 80)]",
-    "df[df[\"city\"] == \"Tashkent\" & df[\"math\"] >= 80]",
     "df[(df[\"city\"] = \"Tashkent\") & (df[\"math\"] >= 80)]",
-    "df[(df[\"city\"] == \"Tashkent\") & (df[\"math\"] >= 80)]"
+    "df[(df[\"city\"] == \"Tashkent\") & (df[\"math\"] >= 80)]",
+    "df[df[\"city\"] == \"Tashkent\" & df[\"math\"] >= 80]"
    ],
-   "answer": 3,
-   "topic": "Filtering",
+   "answer": 2,
+   "topic": "pandas: selecting & filtering",
    "hint": "Check three things in each option: the AND sign pandas uses, the ( ) around each condition, and = versus ==.",
    "explain": "pandas needs & (not and), ( ) around EACH condition, and == to compare. Only one option has all three."
   },
   {
-   "id": 7,
-   "q": "Jasur has math = 70 and english = NaN. What is his total?",
-   "code": "df[\"total\"] = df[\"math\"] + df[\"english\"]",
-   "options": [
-    "0.0",
-    "NaN",
-    "70.0",
-    "35.0"
-   ],
-   "answer": 1,
-   "topic": "New columns",
-   "hint": "NaN means “I don't know”. What is 70 plus a number you don't know?",
-   "explain": "With + between columns, NaN spreads: 70 + NaN = NaN. (Methods like .sum(axis=1) would skip it and give 70.)"
-  },
-  {
-   "id": 8,
+   "id": 13,
    "q": "What does the last line print?",
    "code": "df[\"bonus\"] = df[\"math\"] + 5\ndf.drop(columns=[\"bonus\"])\nprint(\"bonus\" in df.columns)",
    "options": [
-    "True",
+    "None",
     "Error: bonus does not exist",
     "False",
-    "None"
+    "True"
    ],
-   "answer": 0,
-   "topic": "Changing df",
+   "answer": 3,
+   "topic": "pandas: cleaning & changing",
    "hint": "Ask the key question from class: did df change, or did we just get a new result?",
    "explain": "drop() returns a NEW table. We did not reassign, so bonus is still in df → True. Fix: df = df.drop(columns=[\"bonus\"])."
   },
   {
-   "id": 9,
+   "id": 14,
    "q": "What is df[\"math\"].mean()? (rounded)",
    "code": "df = pd.DataFrame({\n    \"name\": [\"Aziz\", \"Malika\", \"Bekzod\", \"Dilnoza\",\n             \"Jasur\", \"Nilufar\", \"Sardor\", \"Kamola\"],\n    \"city\": [\"Tashkent\", \"Samarkand\", \"Bukhara\", \"Tashkent\",\n             \"Samarkand\", \"Tashkent\", \"Bukhara\", \"Samarkand\"],\n    \"hours\": [5, 8, 2, 6, 3, 7, 1, 4],\n    \"math\": [85, 92, 60, 78, 70, 88, 55, np.nan],\n    \"english\": [78, 88, 65, 90, np.nan, 84, 58, 75],\n})\n\n# the 7 real math scores add up to 528\nprint(df[\"math\"].mean())",
    "options": [
-    "NaN",
     "66.0",
     "528.0",
+    "NaN",
     "75.43"
    ],
    "answer": 3,
-   "topic": "Missing data",
+   "topic": "pandas: cleaning & changing",
    "hint": "Compare df[\"math\"].count() with len(df). Which one does mean() divide by?",
    "explain": "mean() skips NaN: 528 ÷ 7 = 75.43. It does NOT count the hole as 0 (528 ÷ 8 = 66.0 would be wrong)."
   },
   {
-   "id": 10,
-   "q": "What does df.dropna(subset=[\"math\"]) do?",
-   "options": [
-    "Removes every row that has any missing value",
-    "Removes the whole math column from the table",
-    "Removes only the rows where math is missing",
-    "Fills the missing math values with the average"
-   ],
-   "answer": 2,
-   "topic": "Missing data",
-   "hint": "The word subset tells pandas WHERE to look for holes.",
-   "explain": "subset=[\"math\"] → only rows with NaN in math are removed (Kamola). dropna() with no subset would also remove Jasur."
-  },
-  {
-   "id": 11,
+   "id": 15,
    "q": "What value does this give for Bukhara?",
    "code": "df = pd.DataFrame({\n    \"name\": [\"Aziz\", \"Malika\", \"Bekzod\", \"Dilnoza\",\n             \"Jasur\", \"Nilufar\", \"Sardor\", \"Kamola\"],\n    \"city\": [\"Tashkent\", \"Samarkand\", \"Bukhara\", \"Tashkent\",\n             \"Samarkand\", \"Tashkent\", \"Bukhara\", \"Samarkand\"],\n    \"hours\": [5, 8, 2, 6, 3, 7, 1, 4],\n    \"math\": [85, 92, 60, 78, 70, 88, 55, np.nan],\n    \"english\": [78, 88, 65, 90, np.nan, 84, 58, 75],\n})\n\ndf.groupby(\"city\")[\"math\"].mean()",
    "options": [
     "55.0",
-    "60.0",
     "115.0",
-    "57.5"
+    "57.5",
+    "60.0"
    ],
-   "answer": 3,
-   "topic": "Groupby",
+   "answer": 2,
+   "topic": "pandas: groupby",
    "hint": "Split first: find every Bukhara student's math score. Then apply mean() to only those scores.",
    "explain": "Bukhara students: Bekzod 60 and Sardor 55. Mean = (60 + 55) ÷ 2 = 57.5."
   },
   {
-   "id": 12,
+   "id": 16,
    "q": "Which code answers: “Which city studies the most hours in total?”",
    "options": [
-    "df.groupby(\"city\")[\"hours\"].count()",
-    "df.groupby(\"city\")[\"hours\"].sum()",
     "df[\"hours\"].sum()",
+    "df.groupby(\"city\")[\"hours\"].sum()",
+    "df.groupby(\"city\")[\"hours\"].count()",
     "df.groupby(\"hours\")[\"city\"].sum()"
    ],
    "answer": 1,
-   "topic": "Groupby",
+   "topic": "pandas: groupby",
    "hint": "Use the template WHO → WHAT → HOW. Who are the groups? Which column? Which summary?",
    "explain": "WHO = city (the groups), WHAT = hours (the column), HOW = sum (total). count() would only count students."
   },
   {
-   "id": 13,
-   "q": "A new student joins. You want to add her row UNDER df. Which function do you use?",
-   "options": [
-    "df.groupby(\"name\")",
-    "pd.merge(df, new, on=\"city\")",
-    "pd.concat([df, new])",
-    "df.agg(new)"
-   ],
-   "answer": 2,
-   "topic": "Combining tables",
-   "hint": "One function puts tables side by side (adds columns). The other stacks them on top of each other (adds rows).",
-   "explain": "concat adds ROWS (stacking). merge adds COLUMNS by matching a shared column, like VLOOKUP."
-  },
-  {
-   "id": 14,
+   "id": 17,
    "q": "Question: “Did course sign-ups grow month by month this year?” Which chart is best?",
    "options": [
     "Line chart",
-    "Box plot",
     "Histogram",
+    "Box plot",
     "Pie chart"
    ],
    "answer": 0,
@@ -206,64 +252,36 @@
    "explain": "Change over time → line chart. Histograms show spread, box plots compare spread, and pie charts are best avoided."
   },
   {
-   "id": 15,
+   "id": 18,
    "q": "In fig, ax = plt.subplots(), what is ax?",
    "options": [
-    "The whole picture / canvas",
-    "One chart area inside the figure",
     "Only the x-axis line",
-    "The legend box with the colours"
+    "The whole picture / canvas",
+    "The legend box with the colours",
+    "One chart area inside the figure"
    ],
-   "answer": 1,
+   "answer": 3,
    "topic": "Matplotlib",
    "hint": "Remember the confusing pair: axes is NOT the same as axis.",
    "explain": "fig = the whole canvas. ax (axes) = one chart inside it. axis = one line (x or y)."
   },
   {
-   "id": 16,
-   "q": "Why must fig.savefig(\"chart.png\") come BEFORE plt.show()?",
-   "options": [
-    "show() deletes the PNG file from the disk",
-    "After show() the figure is closed, so you save a blank image",
-    "It doesn't matter: the order makes no difference",
-    "After show() you can only save .pdf files, not .png files"
-   ],
-   "answer": 1,
-   "topic": "Matplotlib",
-   "hint": "Think about what happens to the figure in memory after it has been shown.",
-   "explain": "plt.show() displays and closes the figure. Saving after it gives an empty picture. Always savefig first."
-  },
-  {
-   "id": 17,
-   "q": "ax.title(\"Scores\") gives a TypeError. What is the correct code?",
-   "options": [
-    "ax.set_title(\"Scores\")",
-    "ax.title = \"Scores\"",
-    "fig.title(\"Scores\")",
-    "plt.ax.title(\"Scores\")"
-   ],
-   "answer": 0,
-   "topic": "Matplotlib",
-   "hint": "Use the translation rule from plt. style to ax style. Which small word is added in front?",
-   "explain": "plt.title → ax.set_title, plt.xlabel → ax.set_xlabel. On ax the names start with set_."
-  },
-  {
-   "id": 18,
+   "id": 19,
    "q": "What does hue=\"time\" do here?",
    "code": "sns.scatterplot(data=tips, x=\"total_bill\",\n                y=\"tip\", hue=\"time\")",
    "options": [
-    "Sorts the dots from the earliest to the latest time of day",
-    "Puts the time column on the x-axis instead",
     "Makes the dots bigger when the time is later",
-    "Colours each dot by the time column (Lunch / Dinner)"
+    "Colours each dot by the time column (Lunch / Dinner)",
+    "Puts the time column on the x-axis instead",
+    "Sorts the dots from the earliest to the latest time of day"
    ],
-   "answer": 3,
+   "answer": 1,
    "topic": "Seaborn",
    "hint": "x = across, y = up. hue adds a third column. How can a flat picture show a third column?",
    "explain": "hue = colour by a column. Lunch and Dinner get different colours, and Seaborn makes the legend for you."
   },
   {
-   "id": 19,
+   "id": 20,
    "q": "In sns.barplot(data=tips, x=\"day\", y=\"tip\"), what is the height of each bar?",
    "options": [
     "The biggest tip on that day",
@@ -275,20 +293,6 @@
    "topic": "Seaborn",
    "hint": "Compare barplot with countplot from class. One shows “how many”. What does the other one show?",
    "explain": "barplot height = the MEAN by default (for totals use estimator=\"sum\"). countplot shows how many rows."
-  },
-  {
-   "id": 20,
-   "q": "df[\"hours\"].corr(df[\"math\"]) is 0.96. What does this tell us?",
-   "options": [
-    "A strong link: more hours go together with higher math scores",
-    "Studying more hours causes exactly 96% higher scores",
-    "There is almost no pattern between hours and math scores",
-    "More hours go together with lower math scores"
-   ],
-   "answer": 0,
-   "topic": "Seaborn",
-   "hint": "Correlation goes from −1 to +1. Where is 0.96 on that line? And remember: does moving together prove cause?",
-   "explain": "0.96 is close to +1 → strong positive: both go up together. But correlation ≠ causation."
   }
  ]
 }
